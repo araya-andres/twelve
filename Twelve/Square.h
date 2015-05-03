@@ -24,6 +24,11 @@ public:
     void clear();
     void set(Color color, int number);
     
+    int number() const { return _number; }
+    Color color() const { return _color; }
+    int column() const { return _col; }
+    int row() const { return _row; }
+    
 private:
     static const int BORDER = 2;
     
