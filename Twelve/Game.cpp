@@ -6,14 +6,37 @@
 //  Copyright (c) 2015 edu.self. All rights reserved.
 //
 
+#include <algorithm>
+#include <vector>
 #include "Game.h"
+#include "Square.h"
 
-Game::Game(Gosu::Window& window)
+Game::Game(Gosu::Window& window, Gosu::Font& font)
 {
+    std::vector<Square::Color> color_list {
+        Square::Color::red,
+        Square::Color::green,
+        Square::Color::blue,
+    };
+    for (int i = 1, n = color_list.size(); i < ROWS * COLS / n; ++i) {
+        color_list.insert(color_list.end(), color_list.begin(), color_list.begin() + n);
+    }
+    color_list.reserve(ROWS * COLS);
+    //std::random_shuffle(color_list.begin(), color_list.end());
+    for (int row = 0; row < ROWS; ++row) {
+        for (int col = 0; col < COLS; ++col) {
+            _squares.push_back(
+                Square(window, font, col, row, color_list[ROWS * row + col])
+            );
+        }
+    }
 }
 
 void Game::draw()
 {
+    for (auto& square : _squares) {
+        square.draw();
+    }
 }
 
 void Game::handle_mouse_down(double x, double y)

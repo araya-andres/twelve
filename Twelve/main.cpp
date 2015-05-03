@@ -1,4 +1,5 @@
 #include <Gosu/Gosu.hpp>
+#include "Game.h"
 #include "Square.h"
 
 class Twelve : public Gosu::Window
@@ -7,16 +8,14 @@ public:
     Twelve()
         : Gosu::Window(640, 640, false)
         , _font(this->graphics(), L"System", 72)
+        , _game(*this, _font)
     {
         setCaption(L"Twelve");
     }
     
     virtual void draw() override
     {
-        Square square1(*this, _font, 0, 0, Square::Color::green);
-        Square square2(*this, _font, 5, 5, Square::Color::blue);
-        square1.draw();
-        square2.draw();
+        _game.draw();
     }
     
     virtual bool needsCursor() const override
@@ -24,18 +23,32 @@ public:
         return true;
     }
     
-    virtual void buttonDown(Gosu::Button id) override
+    virtual void buttonDown(Gosu::Button button) override
     {
-        
+        if (button.id() == Gosu::msLeft)
+        {
+            _game.handle_mouse_down(input().mouseX(), input().mouseY());
+        }
     }
     
-    virtual void buttonUp(Gosu::Button id) override
+    virtual void buttonUp(Gosu::Button button) override
     {
-        
+        switch (button.id()) {
+            case Gosu::msLeft:
+                _game.handle_mouse_up(input().mouseX(), input().mouseY());
+                break;
+            case Gosu::kbR:
+                // TODO: restart game
+                break;
+            default:
+                // do nothing
+                break;
+        }
     }
     
 private:
     Gosu::Font _font;
+    Game _game;
 };
 
 int main()

@@ -17,12 +17,15 @@
 class Game
 {
 public:
-    Game(Gosu::Window&);
+    Game(Gosu::Window&, Gosu::Font&);
     void draw();
     void handle_mouse_down(double x, double y);
     void handle_mouse_up(double x, double y);
     
 private:
+    const int ROWS = 6;
+    const int COLS = 6;
+    
     Square& get_square(int row, int col);
     void move(Square&, Square&);
     std::vector<Square> squares_between_in_row(Square&, Square&);
