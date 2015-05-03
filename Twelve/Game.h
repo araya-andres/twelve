@@ -30,12 +30,11 @@ public:
 private:
     Square* _start_square = nullptr;
     Square* _end_square = nullptr;
+    std::vector<Square> _squares;
     
-    Square& get_square(int row, int col);
     void move(Square&, Square&);
     std::vector<Square*> squares_between_in_row(Square&, Square&);
     std::vector<Square*> squares_between_in_column(Square&, Square&);
-    std::vector<Square> _squares;
 };
 
 #endif /* defined(__Twelve__Game__) */

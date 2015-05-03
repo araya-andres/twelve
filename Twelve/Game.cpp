@@ -26,10 +26,10 @@ Game::Game(Gosu::Window& window, Gosu::Font& font)
         Square::Color::blue,
     };
     assert(ROWS * COLS % color_list.size() == 0);
+    color_list.reserve(ROWS * COLS);
     for (size_t i = 1, n = color_list.size(); i < ROWS * COLS / n; ++i) {
         color_list.insert(color_list.end(), color_list.begin(), color_list.begin() + n);
     }
-    color_list.reserve(ROWS * COLS);
     std::random_shuffle(color_list.begin(), color_list.end());
     for (int row = 0; row < ROWS; ++row) {
         for (int col = 0; col < COLS; ++col) {
@@ -42,9 +42,8 @@ Game::Game(Gosu::Window& window, Gosu::Font& font)
 
 void Game::draw()
 {
-    for (auto& square : _squares) {
+    for (auto& square : _squares)
         square.draw();
-    }
 }
 
 void Game::handle_mouse_down(double x, double y)
@@ -63,11 +62,6 @@ void Game::handle_mouse_up(double x, double y)
     move(*_start_square, *_end_square);
 }
 
-Square& Game::get_square(int row, int col)
-{
-    return _squares[0];
-}
-
 void Game::move(Square& square1, Square& square2)
 {
     if (square1.number() == 0 || square2.number() == 0) return;
@@ -80,9 +74,10 @@ void Game::move(Square& square1, Square& square2)
     } else {
         return;
     }
-    int non_empty_squares = 0;
-    for (auto s : squares)
-        if (s->number() > 0) non_empty_squares++;
+    int non_empty_squares = std::count_if(
+        squares.begin(), squares.end(),
+        [] (Square* s) { return s->number() > 0; }
+    );
     if (non_empty_squares != 2) return;
     square2.set(square2.color(), square2.number() + square1.number());
     square1.clear();
@@ -94,9 +89,7 @@ std::vector<Square*> Game::squares_between_in_row(
 {
     auto boundary = std::minmax(
         square1, square2,
-        [] (const Square& s1, const Square& s2) {
-            return s1.column() < s2.column();
-        }
+        [] (const Square& s1, const Square& s2) { return s1.column() < s2.column(); }
     );
     std::vector<Square*> squares;
     for (int row = square1.row(), col = boundary.first.column(); col <= boundary.second.column(); ++col) {
@@ -105,13 +98,13 @@ std::vector<Square*> Game::squares_between_in_row(
     return squares;
 }
 
-std::vector<Square*> Game::squares_between_in_column(Square& square1, Square& square2)
+std::vector<Square*> Game::squares_between_in_column(
+    Square& square1,
+    Square& square2)
 {
     auto boundary = std::minmax(
         square1, square2,
-        [] (const Square& s1, const Square& s2) {
-            return s1.row() < s2.row();
-        }
+        [] (const Square& s1, const Square& s2) { return s1.row() < s2.row(); }
     );
     std::vector<Square*> squares;
     for (int row = boundary.first.row(), col = square1.column(); row <= boundary.second.row(); row++) {
