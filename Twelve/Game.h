@@ -14,7 +14,7 @@ public:
     static const int COLS = 6;
     static const int BORDER = 20;
     
-    Game(Gosu::Window&, Gosu::Font&);
+    Game(Gosu::Graphics&, Gosu::Font&);
     void draw();
     void handle_mouse_down(double x, double y);
     void handle_mouse_up(double x, double y);

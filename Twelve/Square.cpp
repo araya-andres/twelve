@@ -2,8 +2,8 @@
 #include "Game.h"
 #include "Square.h"
 
-Square::Square(Gosu::Window& window, Gosu::Font& font, int column, int row, Color color)
-    : _window(window)
+Square::Square(Gosu::Graphics& graphics, Gosu::Font& font, int column, int row, Color color)
+    : _graphics(graphics)
     , _font(font)
     , _col(column)
     , _row(row)
@@ -32,7 +32,7 @@ void Square::draw()
     double x4 = x1;
     double y4 = y3;
     Gosu::Color& c = colors[_color];
-    _window.graphics().drawQuad(x1, y1, c, x2, y2, c, x3, y3, c, x4, y4, c, 1);
+    _graphics.drawQuad(x1, y1, c, x2, y2, c, x3, y3, c, x4, y4, c, 1);
     
     // draw text
     std::wostringstream oss;

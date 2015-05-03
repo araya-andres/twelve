@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205C2CC41AF6C9BA004ED9A7 /* Twelve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 205C2CC21AF6C9BA004ED9A7 /* Twelve.cpp */; };
 		205CDA5F1AF5A46C00A7F2DE /* Square.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 205CDA5D1AF5A46C00A7F2DE /* Square.cpp */; };
 		205CDA621AF5BAB600A7F2DE /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 205CDA601AF5BAB600A7F2DE /* Game.cpp */; };
 		20958BEE1AF598A40017A48E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20958BED1AF598A40017A48E /* main.cpp */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		07A00B9281484CF47DAD76A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AF965DE3ADA994155F0524 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		205C2CC21AF6C9BA004ED9A7 /* Twelve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Twelve.cpp; sourceTree = "<group>"; };
+		205C2CC31AF6C9BA004ED9A7 /* Twelve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Twelve.h; sourceTree = "<group>"; };
 		205CDA5D1AF5A46C00A7F2DE /* Square.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Square.cpp; sourceTree = "<group>"; };
 		205CDA5E1AF5A46C00A7F2DE /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		205CDA601AF5BAB600A7F2DE /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				205CDA5E1AF5A46C00A7F2DE /* Square.h */,
 				205CDA601AF5BAB600A7F2DE /* Game.cpp */,
 				205CDA611AF5BAB600A7F2DE /* Game.h */,
+				205C2CC21AF6C9BA004ED9A7 /* Twelve.cpp */,
+				205C2CC31AF6C9BA004ED9A7 /* Twelve.h */,
 			);
 			path = Twelve;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			files = (
 				205CDA621AF5BAB600A7F2DE /* Game.cpp in Sources */,
 				205CDA5F1AF5A46C00A7F2DE /* Square.cpp in Sources */,
+				205C2CC41AF6C9BA004ED9A7 /* Twelve.cpp in Sources */,
 				20958BEE1AF598A40017A48E /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

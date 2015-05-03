@@ -11,7 +11,7 @@ public:
     enum Color { red, green, blue };
     static const int SIDE = 100;
 
-    Square(Gosu::Window&, Gosu::Font&, int column, int row, Color);
+    Square(Gosu::Graphics&, Gosu::Font&, int column, int row, Color);
     void draw();
     void clear();
     void set(Color color, int number);
@@ -24,7 +24,7 @@ public:
 private:
     static const int BORDER = 2;
     
-    Gosu::Window& _window;
+    Gosu::Graphics& _graphics;
     Gosu::Font& _font;
     int _col;
     int _row;

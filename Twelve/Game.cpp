@@ -10,7 +10,7 @@ int get_index(int row, int col)
     return Game::ROWS * row + col;
 }
 
-Game::Game(Gosu::Window& window, Gosu::Font& font)
+Game::Game(Gosu::Graphics& graphics, Gosu::Font& font)
 {
     std::vector<Square::Color> color_list {
         Square::Color::red,
@@ -26,7 +26,7 @@ Game::Game(Gosu::Window& window, Gosu::Font& font)
     for (int row = 0; row < ROWS; ++row) {
         for (int col = 0; col < COLS; ++col) {
             _squares.push_back(
-                Square(window, font, col, row, color_list[get_index(row, col)])
+                Square(graphics, font, col, row, color_list[get_index(row, col)])
             );
         }
     }
