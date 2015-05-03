@@ -1,5 +1,5 @@
 #include <Gosu/Gosu.hpp>
-#include "square.h"
+#include "Square.h"
 
 class Twelve : public Gosu::Window
 {
@@ -17,6 +17,21 @@ public:
         Square square2(*this, _font, 5, 5, Square::Color::blue);
         square1.draw();
         square2.draw();
+    }
+    
+    virtual bool needsCursor() const override
+    {
+        return true;
+    }
+    
+    virtual void buttonDown(Gosu::Button id) override
+    {
+        
+    }
+    
+    virtual void buttonUp(Gosu::Button id) override
+    {
+        
     }
     
 private:
