@@ -1,7 +1,6 @@
 #ifndef __Twelve__Square__
 #define __Twelve__Square__
 
-#include <stdio.h>
 #include <Gosu/Gosu.hpp>
 
 

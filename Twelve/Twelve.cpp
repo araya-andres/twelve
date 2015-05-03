@@ -20,8 +20,7 @@ bool Twelve::needsCursor() const
 
 void Twelve::buttonDown(Gosu::Button button)
 {
-    if (button.id() == Gosu::msLeft)
-    {
+    if (button.id() == Gosu::msLeft) {
         _game.handle_mouse_down(input().mouseX(), input().mouseY());
     }
 }

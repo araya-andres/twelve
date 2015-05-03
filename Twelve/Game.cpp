@@ -102,7 +102,7 @@ std::vector<Square*> Game::squares_between_in_column(
         [] (const Square& s1, const Square& s2) { return s1.row() < s2.row(); }
     );
     std::vector<Square*> squares;
-    for (int row = boundary.first.row(), col = square1.column(); row <= boundary.second.row(); row++) {
+    for (int row = boundary.first.row(), col = square1.column(); row <= boundary.second.row(); ++row) {
         squares.push_back(&_squares.at(get_index(row, col)));
     }
     return squares;
