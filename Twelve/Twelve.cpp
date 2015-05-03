@@ -33,7 +33,7 @@ void Twelve::buttonUp(Gosu::Button button)
             _game.handle_mouse_up(input().mouseX(), input().mouseY());
             break;
             case Gosu::kbR:
-            // TODO: restart game
+            _game.restart();
             break;
         default:
             // do nothing

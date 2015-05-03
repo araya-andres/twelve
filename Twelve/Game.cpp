@@ -10,26 +10,20 @@ int get_index(int row, int col)
     return Game::ROWS * row + col;
 }
 
-Game::Game(Gosu::Graphics& graphics, Gosu::Font& font)
+Game::Game(Gosu::Graphics& g, Gosu::Font& f)
+    : _color_list({ Square::Color::red, Square::Color::green, Square::Color::blue })
 {
-    std::vector<Square::Color> color_list {
-        Square::Color::red,
-        Square::Color::green,
-        Square::Color::blue,
-    };
-    assert(ROWS * COLS % color_list.size() == 0);
-    color_list.reserve(ROWS * COLS);
-    for (size_t i = 1, n = color_list.size(); i < ROWS * COLS / n; ++i) {
-        color_list.insert(color_list.end(), color_list.begin(), color_list.begin() + n);
-    }
-    std::random_shuffle(color_list.begin(), color_list.end());
-    for (int row = 0; row < ROWS; ++row) {
-        for (int col = 0; col < COLS; ++col) {
-            _squares.push_back(
-                Square(graphics, font, col, row, color_list[get_index(row, col)])
-            );
-        }
-    }
+    _squares.reserve(ROWS * COLS);
+    for (int row = 0; row < ROWS; ++row)
+        for (int col = 0; col < COLS; ++col)
+            _squares.push_back(Square(g, f, col, row));
+
+    assert(ROWS * COLS % _color_list.size() == 0);
+    _color_list.reserve(ROWS * COLS);
+    for (size_t i = 1, n = _color_list.size(); i < ROWS * COLS / n; ++i)
+        _color_list.insert(_color_list.end(), _color_list.begin(), _color_list.begin() + n);
+
+    restart();
 }
 
 void Game::draw()
@@ -38,18 +32,27 @@ void Game::draw()
         square.draw();
 }
 
+void Game::restart()
+{
+    assert(_squares.size() == _color_list.size());
+    std::random_shuffle(_color_list.begin(), _color_list.end());
+    int i = 0;
+    for (Square& s : _squares)
+        s.set(_color_list[i++], 1);
+}
+
 void Game::handle_mouse_down(double x, double y)
 {
     int row = ((int)y - Game::BORDER) / Square::SIDE;
     int col = ((int)x - Game::BORDER) / Square::SIDE;
-    _start_square = &_squares[get_index(row, col)];
+    _start_square = &_squares.at(get_index(row, col));
 }
 
 void Game::handle_mouse_up(double x, double y)
 {
     int row = ((int)y - Game::BORDER) / Square::SIDE;
     int col = ((int)x - Game::BORDER) / Square::SIDE;
-    _end_square = &_squares[get_index(row, col)];
+    _end_square = &_squares.at(get_index(row, col));
     assert(_start_square && _end_square);
     move(*_start_square, *_end_square);
 }
@@ -85,7 +88,7 @@ std::vector<Square*> Game::squares_between_in_row(
     );
     std::vector<Square*> squares;
     for (int row = square1.row(), col = boundary.first.column(); col <= boundary.second.column(); ++col) {
-        squares.push_back(&_squares[get_index(row, col)]);
+        squares.push_back(&_squares.at(get_index(row, col)));
     }
     return squares;
 }
@@ -100,7 +103,7 @@ std::vector<Square*> Game::squares_between_in_column(
     );
     std::vector<Square*> squares;
     for (int row = boundary.first.row(), col = square1.column(); row <= boundary.second.row(); row++) {
-        squares.push_back(&_squares[get_index(row, col)]);
+        squares.push_back(&_squares.at(get_index(row, col)));
     }
     return squares;
 }

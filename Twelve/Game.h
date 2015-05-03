@@ -16,12 +16,14 @@ public:
     
     Game(Gosu::Graphics&, Gosu::Font&);
     void draw();
+    void restart();
     void handle_mouse_down(double x, double y);
     void handle_mouse_up(double x, double y);
     
 private:
     Square* _start_square = nullptr;
     Square* _end_square = nullptr;
+    std::vector<Square::Color> _color_list;
     std::vector<Square> _squares;
     
     void move(Square&, Square&);

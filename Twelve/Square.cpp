@@ -2,14 +2,14 @@
 #include "Game.h"
 #include "Square.h"
 
-Square::Square(Gosu::Graphics& graphics, Gosu::Font& font, int column, int row, Color color)
-    : _graphics(graphics)
-    , _font(font)
-    , _col(column)
+Square::Square(Gosu::Graphics& g, Gosu::Font& f, int col, int row)
+    : _graphics(g)
+    , _font(f)
+    , _col(col)
     , _row(row)
-    , _color(color)
+    , _color(Color::red)
+    , _number(0)
 {
-    _number = 1;
 }
 
 void Square::draw()
