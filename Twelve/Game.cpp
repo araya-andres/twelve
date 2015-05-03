@@ -1,11 +1,3 @@
-//
-//  Game.cpp
-//  Twelve
-//
-//  Created by Andres Araya Rojas on 5/2/15.
-//  Copyright (c) 2015 edu.self. All rights reserved.
-//
-
 #include <algorithm>
 #include <assert.h>
 #include <vector>

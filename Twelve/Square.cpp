@@ -1,11 +1,3 @@
-//
-//  Square.cpp
-//  Twelve
-//
-//  Created by Andres Araya Rojas on 5/2/15.
-//  Copyright (c) 2015 edu.self. All rights reserved.
-//
-
 #include <sstream>
 #include "Game.h"
 #include "Square.h"
