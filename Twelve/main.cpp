@@ -5,6 +5,9 @@
 class Twelve : public Gosu::Window
 {
 public:
+    static const int TOP_MARGIN = 20;
+    static const int LEFT_MARGIN = 20;
+    
     Twelve()
         : Gosu::Window(640, 640, false)
         , _font(this->graphics(), L"System", 72)

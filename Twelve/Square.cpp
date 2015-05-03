@@ -27,12 +27,12 @@ void Square::draw()
         Gosu::Color(0xaa, 0x00, 0x00, 0xff)
     };
     if (_number == 0) return;
-    double x1 = 22 + _col * 100;
-    double y1 = 22 + _row * 100;
-    double x2 = x1 + 96;
+    double x1 = 20 + BORDER + _col * SIDE;
+    double y1 = 20 + BORDER + _row * SIDE;
+    double x2 = x1 + SIDE - 2 * BORDER;
     double y2 = y1;
     double x3 = x2;
-    double y3 = y2 + 92;
+    double y3 = y2 + SIDE - 2 * BORDER;
     double x4 = x1;
     double y4 = y3;
 

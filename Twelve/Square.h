@@ -17,6 +17,7 @@ class Square
 {
 public:
     enum Color { red, green, blue };
+    static const int SIDE = 100;
 
     Square(Gosu::Window&, Gosu::Font&, int column, int row, Color);
     void draw();
@@ -24,6 +25,8 @@ public:
     void set(Color color, int number);
     
 private:
+    static const int BORDER = 2;
+    
     Gosu::Window& _window;
     Gosu::Font& _font;
     int _col;

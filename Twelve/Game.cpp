@@ -7,7 +7,9 @@
 //
 
 #include <algorithm>
+#include <assert.h>
 #include <vector>
+
 #include "Game.h"
 #include "Square.h"
 
@@ -18,7 +20,8 @@ Game::Game(Gosu::Window& window, Gosu::Font& font)
         Square::Color::green,
         Square::Color::blue,
     };
-    for (int i = 1, n = color_list.size(); i < ROWS * COLS / n; ++i) {
+    assert(ROWS * COLS % color_list.size() == 0);
+    for (size_t i = 1, n = color_list.size(); i < ROWS * COLS / n; ++i) {
         color_list.insert(color_list.end(), color_list.begin(), color_list.begin() + n);
     }
     color_list.reserve(ROWS * COLS);
@@ -41,6 +44,8 @@ void Game::draw()
 
 void Game::handle_mouse_down(double x, double y)
 {
+    int row = ((int)y - 20) / Square::SIDE;
+    int col = ((int)x - 20) / Square::SIDE;
 }
 
 void Game::handle_mouse_up(double x, double y)
