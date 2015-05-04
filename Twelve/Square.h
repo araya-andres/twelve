@@ -21,8 +21,6 @@ public:
     int row() const { return _row; }
     
 private:
-    static const int BORDER = 2;
-    
     Gosu::Graphics& _graphics;
     Gosu::Font& _font;
     int _col;

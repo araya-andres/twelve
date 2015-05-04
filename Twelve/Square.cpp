@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "Square.h"
 
+static const int BORDER = 2;
+
 Square::Square(Gosu::Graphics& g, Gosu::Font& f, int col, int row)
     : _graphics(g)
     , _font(f)
