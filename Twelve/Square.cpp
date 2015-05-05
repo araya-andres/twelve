@@ -15,7 +15,7 @@ Square::Square(Gosu::Graphics& g, Gosu::Font& f, int col, int row)
 {
 }
 
-void Square::draw()
+void Square::draw() const
 {
     static Gosu::Color colors[] = {
         Gosu::Color(0xaa, 0xff, 0x00, 0x00),

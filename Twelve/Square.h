@@ -11,7 +11,7 @@ public:
     static const int SIDE = 100;
 
     Square(Gosu::Graphics&, Gosu::Font&, int column, int row);
-    void draw();
+    void draw() const;
     void clear();
     void set(Color color, int number);
     

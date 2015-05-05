@@ -26,7 +26,7 @@ Game::Game(Gosu::Graphics& g, Gosu::Font& f)
     restart();
 }
 
-void Game::draw()
+void Game::draw() const
 {
     for (auto& square : _squares)
         square.draw();
@@ -79,8 +79,8 @@ void Game::move(Square& square1, Square& square2)
 }
 
 std::vector<Square*> Game::squares_between_in_row(
-    Square& square1,
-    Square& square2)
+    const Square& square1,
+    const Square& square2)
 {
     auto boundary = std::minmax(
         square1, square2,
@@ -94,8 +94,8 @@ std::vector<Square*> Game::squares_between_in_row(
 }
 
 std::vector<Square*> Game::squares_between_in_column(
-    Square& square1,
-    Square& square2)
+    const Square& square1,
+    const Square& square2)
 {
     auto boundary = std::minmax(
         square1, square2,

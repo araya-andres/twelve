@@ -15,7 +15,7 @@ public:
     static const int BORDER = 20;
     
     Game(Gosu::Graphics&, Gosu::Font&);
-    void draw();
+    void draw() const;
     void restart();
     void handle_mouse_down(double x, double y);
     void handle_mouse_up(double x, double y);
@@ -27,8 +27,8 @@ private:
     std::vector<Square> _squares;
     
     void move(Square&, Square&);
-    std::vector<Square*> squares_between_in_row(Square&, Square&);
-    std::vector<Square*> squares_between_in_column(Square&, Square&);
+    std::vector<Square*> squares_between_in_row(const Square&, const Square&);
+    std::vector<Square*> squares_between_in_column(const Square&, const Square&);
 };
 
 #endif /* defined(__Twelve__Game__) */
