@@ -10,10 +10,6 @@
 class Game
 {
 public:
-    static const int ROWS = 6;
-    static const int COLS = 6;
-    static const int BORDER = 20;
-    
     Game(Gosu::Graphics&, Gosu::Font&);
     void draw() const;
     void restart();

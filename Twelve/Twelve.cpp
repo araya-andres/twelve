@@ -1,7 +1,8 @@
+#include "Board.h"
 #include "Twelve.h"
 
 Twelve::Twelve()
-    : Gosu::Window(Game::ROWS * Square::SIDE + 2 * Game::BORDER, Game::COLS * Square::SIDE + 2 * Game::BORDER, false)
+    : Gosu::Window(Board::ROWS * Square::SIDE + 2 * Board::BORDER, Board::COLS * Square::SIDE + 2 * Board::BORDER, false)
     , _font(this->graphics(), L"System", 72)
     , _game(this->graphics(), _font)
 {

@@ -1,5 +1,6 @@
 #include <sstream>
 
+#include "Board.h"
 #include "Game.h"
 #include "Square.h"
 
@@ -26,8 +27,8 @@ void Square::draw() const
     if (_number == 0) return;
     
     // draw square
-    double x1 = Game::BORDER + BORDER + _col * SIDE;
-    double y1 = Game::BORDER + BORDER + _row * SIDE;
+    double x1 = Board::BORDER + BORDER + _col * SIDE;
+    double y1 = Board::BORDER + BORDER + _row * SIDE;
     double x2 = x1 + SIDE - 2 * BORDER;
     double y2 = y1;
     double x3 = x2;

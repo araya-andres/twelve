@@ -35,6 +35,7 @@
 		205CDA5E1AF5A46C00A7F2DE /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		205CDA601AF5BAB600A7F2DE /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		205CDA611AF5BAB600A7F2DE /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		208F99F51AF9ADF600A9FA4B /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		20958BE51AF598A40017A48E /* Twelve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twelve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20958BE91AF598A40017A48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20958BED1AF598A40017A48E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 				205CDA611AF5BAB600A7F2DE /* Game.h */,
 				205C2CC21AF6C9BA004ED9A7 /* Twelve.cpp */,
 				205C2CC31AF6C9BA004ED9A7 /* Twelve.h */,
+				208F99F51AF9ADF600A9FA4B /* Board.h */,
 			);
 			path = Twelve;
 			sourceTree = "<group>";

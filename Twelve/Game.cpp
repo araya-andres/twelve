@@ -2,25 +2,26 @@
 #include <assert.h>
 #include <vector>
 
+#include "Board.h"
 #include "Game.h"
 #include "Square.h"
 
 int get_index(int row, int col)
 {
-    return Game::ROWS * row + col;
+    return Board::ROWS * row + col;
 }
 
 Game::Game(Gosu::Graphics& g, Gosu::Font& f)
     : _color_list({ Square::Color::red, Square::Color::green, Square::Color::blue })
 {
-    _squares.reserve(ROWS * COLS);
-    for (int row = 0; row < ROWS; ++row)
-        for (int col = 0; col < COLS; ++col)
+    _squares.reserve(Board::ROWS * Board::COLS);
+    for (int row = 0; row < Board::ROWS; ++row)
+        for (int col = 0; col < Board::COLS; ++col)
             _squares.push_back(Square(g, f, col, row));
 
-    assert(ROWS * COLS % _color_list.size() == 0);
-    _color_list.reserve(ROWS * COLS);
-    for (size_t i = 1, n = _color_list.size(); i < ROWS * COLS / n; ++i)
+    assert(Board::ROWS * Board::COLS % _color_list.size() == 0);
+    _color_list.reserve(Board::ROWS * Board::COLS);
+    for (size_t i = 1, n = _color_list.size(); i < Board::ROWS * Board::COLS / n; ++i)
         _color_list.insert(_color_list.end(), _color_list.begin(), _color_list.begin() + n);
 
     restart();
@@ -43,15 +44,15 @@ void Game::restart()
 
 void Game::handle_mouse_down(double x, double y)
 {
-    int row = ((int)y - Game::BORDER) / Square::SIDE;
-    int col = ((int)x - Game::BORDER) / Square::SIDE;
+    int row = ((int)y - Board::BORDER) / Square::SIDE;
+    int col = ((int)x - Board::BORDER) / Square::SIDE;
     _start_square = &_squares.at(get_index(row, col));
 }
 
 void Game::handle_mouse_up(double x, double y)
 {
-    int row = ((int)y - Game::BORDER) / Square::SIDE;
-    int col = ((int)x - Game::BORDER) / Square::SIDE;
+    int row = ((int)y - Board::BORDER) / Square::SIDE;
+    int col = ((int)x - Board::BORDER) / Square::SIDE;
     _end_square = &_squares.at(get_index(row, col));
     assert(_start_square && _end_square);
     move(*_start_square, *_end_square);
